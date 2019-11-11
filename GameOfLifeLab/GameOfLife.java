@@ -17,9 +17,7 @@ public class GameOfLife
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
-    // the game board will have 5 rows and 5 columns
-    private final int ROWS = 5;
-    private final int COLS = 5;
+    // remove instance variables
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -27,10 +25,10 @@ public class GameOfLife
      * @post    the game will be initialized and populated with the initial state of cells
      * 
      */
-    public GameOfLife()
+    public GameOfLife(int initialRows, int initialCols)  // make constructor configurable
     {
         // create the grid, of the specified size, that contains Actors
-        BoundedGrid<Actor> grid = new BoundedGrid<Actor>(ROWS, COLS);
+        BoundedGrid<Actor> grid = new BoundedGrid<Actor>(initialRows, initialCols); // update for parameters
         
         // create a world based on the grid
         world = new ActorWorld(grid);
@@ -79,7 +77,7 @@ public class GameOfLife
      * @post    the world has been populated with a new grid containing the next generation
      * 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()  // change visibility to public
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -116,7 +114,7 @@ public class GameOfLife
      */
     public int getNumRows()
     {
-        return ROWS;
+        return this.world.getGrid().getNumRows();
     }
     
     /**
@@ -126,7 +124,7 @@ public class GameOfLife
      */
     public int getNumCols()
     {
-        return COLS;
+        return this.world.getGrid().getNumCols();
     }
     
     
@@ -136,7 +134,7 @@ public class GameOfLife
      */
     public static void main(String[] args) throws InterruptedException
     {
-        GameOfLife game = new GameOfLife();
+        GameOfLife game = new GameOfLife(6, 6);  // hard-code 6x6 grid
         
         // populate the game
         game.populateGame();

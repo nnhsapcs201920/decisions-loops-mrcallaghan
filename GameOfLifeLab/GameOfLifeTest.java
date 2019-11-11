@@ -46,19 +46,19 @@ public class GameOfLifeTest
         /* expected pattern for initial state
          *  (X: alive; -: dead)
          * 
-         *    0 1 2 3 4
-         *  0 - - X - -
-         *  1 - - - - -
-         *  2 X X - - -
-         *  3 - - - - -
-         *  4 - - - - -
-         *  
-         */
-        
-        GameOfLife game = new GameOfLife();
+         *    0 1 2 3 4 5
+         *  0 - - X - - -
+         *  1 - - - - - -
+         *  2 X X - - - -
+         *  3 - - - - - -
+         *  4 - - - - - -
+         *  5 - - - - - -
+        */
+       
+        final int ROWS = 6;
+        final int COLS = 6;
+        GameOfLife game = new GameOfLife(ROWS, COLS);
         game.populateGame();
-        final int ROWS = game.getNumRows();
-        final int COLS = game.getNumCols();
 
         for(int row = 0; row < ROWS; row++)
         {
